@@ -1,26 +1,115 @@
-@import "tailwindcss";
-
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Inter', 'Segoe UI', sans-serif;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+/* Light mode */
+[data-theme="light"] {
+  --bg: #e2e8f0;
+  --bg-card: #dcfce7;
+  --bg-form: #d1f3c6;
+  --border: #e2e8f0;
+  --text: #1a202c;
+  --text-muted: #718096;
+  --primary: #1a3a2a;
+  --primary-hover: #2d6a4f;
+  --accent: #2d6a4f;
+  --input-bg: #ffffff;
+  --input-border: #cbd5e0;
+  --badge-pending-bg: #fef3c7;
+  --badge-pending-text: #d97706;
+  --badge-progress-bg: #dbeafe;
+  --badge-progress-text: #2563eb;
+  --badge-done-bg: #dcfce7;
+  --badge-done-text: #16a34a;
+  --shadow: 0 1px 3px rgba(0, 0, 0, 0.08), 0 1px 2px rgba(0, 0, 0, 0.04);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.07), 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+/* Dark mode */
+[data-theme="dark"] {
+  --title-text:#fff;
+  --bg: #132142;
+  --bg-card: #1e293b;
+  --bg-form: #2e456b;
+  --border: #334155;
+  --text: #2d6a4f;
+  --text-muted: #94a3b8;
+  --primary: #1a3a2a;
+  --primary-hover: #2d6a4f;
+  --accent: #4ade80;
+  --input-bg: #fcfdfd;
+  --input-border: #334155;
+  --badge-pending-bg: #422006;
+  --badge-pending-text: #fbbf24;
+  --badge-progress-bg: #1e3a5f;
+  --badge-progress-text: #60a5fa;
+  --badge-done-bg: #14532d;
+  --badge-done-text: #4ade80;
+  --shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.4);
+}
+
+::placeholder {
+  color: var(--text-muted);
+}
+
+input,
+select,
+textarea {
+  background-color: var(--input-bg);
+  color: var(--text);
+  border: 1px solid var(--input-border);
+  border-radius: 8px;
+  padding: 10px 14px;
+  font-size: 14px;
+  width: 100%;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+input:focus,
+select:focus {
+  border-color: var(--accent);
+}
+
+.fc {
+  color: var(--text) !important;
+}
+
+.fc .fc-col-header-cell-cushion,
+.fc .fc-daygrid-day-number,
+.fc .fc-daygrid-more-link {
+  color: var(--text) !important;
+  text-decoration: none;
+}
+
+.fc .fc-toolbar-title {
+  color: var(--text) !important;
+}
+
+.fc .fc-button {
+  background-color: #1a3a2a !important;
+  border-color: #1a3a2a !important;
+}
+
+.fc .fc-day-today {
+  background-color: rgba(45, 106, 79, 0.1) !important;
+}
+
+.fc td,
+.fc th {
+  border-color: var(--border) !important;
+}
+
+.fc .fc-scrollgrid {
+  border-color: var(--border) !important;
 }
