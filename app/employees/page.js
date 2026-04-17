@@ -28,7 +28,11 @@ export default function EmployeesPage(){
   }
 
   async function handleDelete(id){
-    await supabase.from('users').delete().eq('id', id)
+    if (!confirm("Are you sure you want to delete this employee?")) return;
+    await supabase.from("job_assignments").delete().eq("user_id", id);
+    await supabase.from("clock_events").delete().eq("user_id", id);
+    await supabase.from("job_reports").delete().eq("user_id", id);
+    await supabase.from("users").delete().eq("id", id);
     fetchEmployees()
   }
 

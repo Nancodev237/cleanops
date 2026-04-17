@@ -40,6 +40,7 @@ export default function SitesPage() {
   }
 
   async function handleDelete(id) {
+    if (!confirm("Are you sure you want to delete this site?")) return
     await supabase.from("sites").delete().eq("id", id);
     fetchSites();
   }

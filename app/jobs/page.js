@@ -1,6 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
 import { supabase } from "../lib/supabase";
+import Link from "next/link";
 
 export default function JobsPage() {
   const [jobs, setJobs] = useState([]);
@@ -160,7 +161,9 @@ export default function JobsPage() {
         {jobs.map((job) => (
           <div key={job.id} style={styles.card}>
             <div>
-              <p style={styles.jobTitle}>{job.title}</p>
+              <Link href={`/jobs/${job.id}`} style={styles.jobLink}>
+                <p style={styles.jobTitle}>{job.title}</p>
+              </Link>
               <p style={styles.jobDetail}> {job.sites?.name}</p>
               <p style={styles.jobDetail}> {job.date}</p>
               {job.notes && <p style={styles.jobDetail}> {job.notes}</p>}
@@ -309,4 +312,5 @@ const styles = {
   emptyText: {
     fontSize: "14px",
   },
+  jobLink: { textDecoration: "none" },
 };
